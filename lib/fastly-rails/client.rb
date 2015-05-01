@@ -18,7 +18,7 @@ module FastlyRails
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       response = http.request(request)
 
-      response.status == 200
+      response.code == 200
     end
 
     def purge_url(key)
