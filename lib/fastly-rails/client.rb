@@ -1,19 +1,28 @@
-require 'fastly'
+require 'net/https'
 
 module FastlyRails
-  # A simple wrapper around the fastly-ruby client.
-  class Client < DelegateClass(Fastly)
+  class Client
+    API_ENDPOINT = 'api.fastly.com'
+
     def initialize(opts={})
-      super(Fastly.new(opts))
+      @api_key = opts[:api_key]
+      @service_id = opts[:service_id]
     end
 
     def purge_by_key(key)
-      client.require_key!
-      client.post purge_url(key)
+      http = Net::HTTP.new(API_ENDPOINT)
+
+      request = Net::HTTP::Post.new(purge_url(key))
+      request['Fastly-Key'] = @api_key
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      response = http.request(request)
+
+      response.status == 200
     end
 
     def purge_url(key)
-      "/service/#{FastlyRails.service_id}/purge/#{key}"
+      "/service/#{@service_id}/purge/#{key}"
     end
   end
 end

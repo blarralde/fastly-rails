@@ -5,17 +5,16 @@ require "fastly-rails/version"
 Gem::Specification.new do |s|
   s.name        = "fastly-rails"
   s.version     = FastlyRails::VERSION
-  s.authors     = ["Michael May", "Hassan Shahid", "Ezekiel Templin", "Thomas O'Neil"]
-  s.email       = ["michael@fastly.com", "hassan@fastly.com", "ezekiel@fastly.com", "tommy@fastly.com"]
+  s.authors     = ["Michael May", "Hassan Shahid", "Ezekiel Templin", "Thomas O'Neil", "Ben Larralde"]
+  s.email       = ["michael@fastly.com", "hassan@fastly.com", "ezekiel@fastly.com", "tommy@fastly.com", "ben@hackster.io"]
   s.homepage    = "https://github.com/fastly/fastly-rails"
-  s.summary     = "Fastly instant purging integration for Rails"
-  s.description = "Creates surrogate keys on ActiveRecord models, sets cache/surrogate headers, and adds a purge method to ActiveRecord objects."
+  s.summary     = "Fastly instant purging integration for Rails (with working purging)"
+  s.description = "Creates surrogate keys on ActiveRecord models, sets cache/surrogate headers, and adds a purge method to ActiveRecord objects. Slightly stripped down version of the gem that doesn't rely on the fastly gem and has working purging."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails"
-  s.add_dependency 'fastly', '~> 1.1.4'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "database_cleaner"

@@ -29,10 +29,6 @@ module FastlyRails
 
     private
 
-    def has_credentials?
-      user && password
-    end
-
     def service_id_nil?
       service_id.nil?
     end

@@ -31,8 +31,7 @@ module FastlyRails
 
     @client ||= Client.new(
       :api_key  => configuration.api_key,
-      :user     => configuration.user,
-      :password => configuration.password,
+      :service_id => configuration.service_id
     )
   end
 

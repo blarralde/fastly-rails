@@ -1,3 +1,3 @@
 module FastlyRails
-  VERSION = "0.3.0"
+  VERSION = "ben-0.0.1"
 end
