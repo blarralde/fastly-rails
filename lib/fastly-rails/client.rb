@@ -10,7 +10,7 @@ module FastlyRails
     end
 
     def purge_by_key(key)
-      http = Net::HTTP.new(API_ENDPOINT)
+      http = Net::HTTP.new(API_ENDPOINT, 443)
 
       request = Net::HTTP::Post.new(purge_url(key))
       request['Fastly-Key'] = @api_key
