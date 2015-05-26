@@ -2,7 +2,9 @@ module FastlyRails
   module CacheControlHeaders
     extend ActiveSupport::Concern
 
-    helper_method :csrf_disabled?
+    def self.included(base)
+      base.send :helper_method, :csrf_disabled?
+    end
 
     # Sets Cache-Control and Surrogate-Control HTTP headers
     # Surrogate-Control is stripped at the cache, Cache-Control persists (in case of other caches in front of fastly)
